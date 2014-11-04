@@ -2,6 +2,7 @@ package com.tenforwardconsulting.cordova.bgloc;
 
 import java.util.List;
 import java.util.Iterator;
+import java.util.Date;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -662,6 +663,9 @@ public class LocationUpdateService extends Service implements LocationListener {
             DefaultHttpClient httpClient = new DefaultHttpClient();
             HttpPost request = new HttpPost(url);
 
+            JSONObject timestamp = new JSONObject();
+            params.put("timestamp", l.getRecordedAt().getTime()/(int)(1000) );
+
             JSONObject location = new JSONObject();
             location.put("latitude", l.getLatitude());
             location.put("longitude", l.getLongitude());
@@ -670,6 +674,7 @@ public class LocationUpdateService extends Service implements LocationListener {
             location.put("bearing", l.getBearing());
             location.put("altitude", l.getAltitude());
             location.put("recorded_at", dao.dateToString(l.getRecordedAt()));
+            
             params.put("location", location);
 
             Log.i(TAG, "location: " + location.toString());
