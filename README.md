@@ -16,11 +16,32 @@ The plugin creates the object `window.plugins.backgroundGeoLocation` with the me
 
   `stop(success, fail)`.
 
+## What was added to the official version ##
+On the Android version : A unix timestamp is now sent along. 
+
+Here is the JSON structure that is sent:
+
+```
+{
+  "timestamp": "123456677",
+  "location":{
+    "latitude": "45.234244",
+    "longitude": "-73.345345",
+    "accuracy": "22.149",
+    "altitude": "0.0",
+    "speed": "0.0",
+    "bearing": "0.0",
+    "recorded_at":"2014-11-04T01:08Z"
+  }
+}
+```
+
+
 ## Installing the plugin ##
 
 ```
 
-   cordova plugin add https://github.com/christocracy/cordova-plugin-background-geolocation.git
+   cordova plugin add https://github.com/boltex/cordova-plugin-background-geolocation.git
 ```
 
 A full example could be:
